@@ -1,0 +1,7 @@
+if you are on docker, please add:
+- docker compose exec web
+for any command
+
+for example:
+1. docker compose exec web python manage.py show_urls
+2. docker compose exec web python --version

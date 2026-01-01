@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}All Posts{% endblock %}
+{% block content %}
+    <h1>Latest Posts</h1>
+    <div class="posts">
+        {% for post in posts %}
+            <article class="post-card">
+                <h2>
+                    <a href="{% url 'posts:post_detail' post.id %}">{{ post.title }}</a>
+                </h2>
+                <p>{{ post.content|truncatechars:100 }}</p>
+            </article>
+        {% endfor %}
+    </div>
+{% endblock %}

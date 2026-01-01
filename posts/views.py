@@ -1,29 +1,23 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import Http404
 
-# List of posts with id, title, and content
-posts = [
-    {'id': 1, 'title': 'First Post', 'content': 'This is the content of the first post.'},
-    {'id': 2, 'title': 'Second Post', 'content': 'This is the content of the second post.'},
-    {'id': 3, 'title': 'Third Post', 'content': 'This is the content of the third post.'},
+# Temporary dummy data
+POSTS = [
+    {"id": 1, "title": "First Post", "content": "Hello Django"},
+    {"id": 2, "title": "Second Post", "content": "Learning Templates"},
 ]
 
-# Create your views here.
+# Home page view → list all posts
 def post_list(request):
-    html = '<h1>Blog Posts</h1><ul>'
-    for post in posts:
-        html += f'<li><a href="/posts/{post["id"]}/">{post["title"]}</a></li>'
-    html += '</ul>'
-    
-    return HttpResponse(html)
+    context = {"posts": POSTS}
+    return render(request, 'posts/post_list.html', context)
 
+
+# Detail view → single post
 def post_detail(request, id):
-    post = next((post for post in posts if post['id'] == id), None)
-    if post is None:
-        return HttpResponseNotFound('<h1>Post not found</h1>')
-    
-    html = f'<h1>{post["title"]}</h1><p>{post["content"]}</p>'
-    return HttpResponse(html)
+    post = next((p for p in POSTS if p["id"] == id), None)
+    if not post:
+        raise Http404("Post not found")
 
-def post_home(request):
-    return render(request, 'post/home.html')
+    context = {"post": post}
+    return render(request, 'posts/post_detail.html', context)
