@@ -6,10 +6,11 @@ A comprehensive Django project created for learning Django framework step by ste
 
 This project covers the following Django topics:
 
-1. **Installing Django & Course Setup** - Project initialization and environment setup
-2. **URLs & Views** - Routing and request handling
-3. **Templates, Context Processors & Static Files** - Frontend templating and asset management
-4. **Databases, ORM & Models** - Database design and Object-Relational Mapping
+1. **Installing Django & Project Setup using Docker** - Project initialization and environment setup **(Completed)**
+   - Setting up a Django project with Docker for containerization and ease of deployment.
+2. **URLs & Views** - Routing and request handling **(Completed)**
+3. **Templates, Context Processors & Static Files** - Frontend templating and asset management **(Completed)**
+4. **Databases, ORM & Models** - Database design and Object-Relational Mapping ** (Ongoing)**
 5. **Admin & ModelAdmin** - Django admin interface customization
 6. **Working with Forms & ModelForms** - Form handling and validation
 7. **Cookies in Django** - Managing client-side data storage
@@ -89,13 +90,34 @@ The application will be available at `http://localhost:8000`.
 ## 📂 Project Structure
 
 ```
-blog/
-├── blog/           # Main project configuration
-├── posts/          # Blog posts application
-├── manage.py       # Django management script
-├── requirements.txt
+.
+├── blog/                   # Project configuration
+│   ├── context_processors.py
+│   ├── settings.py
+│   ├── urls.py
+│   ├── views.py
+│   └── ...
+├── posts/                  # Blog application
+│   ├── management/         # Custom management commands
+│   ├── migrations/         # Database migrations
+│   ├── templates/          # App-specific templates
+│   ├── admin.py
+│   ├── models.py
+│   ├── urls.py
+│   ├── views.py
+│   └── ...
+├── static/                 # Static files (CSS, JS, Images)
+│   └── css/
+├── templates/              # Global templates
+│   ├── partials/           # Reusable template parts
+│   ├── 404.html
+│   └── base.html
+├── db.sqlite3
+├── docker-compose.yml
 ├── Dockerfile
-└── docker-compose.yml
+├── manage.py
+├── README.md
+└── requirements.txt
 ```
 
 ## 🛠️ Technologies Used
