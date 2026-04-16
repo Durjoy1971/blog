@@ -1,37 +1,58 @@
 # Django Learning Project - Blog Application
 
-A comprehensive Django project created for learning Django framework step by step. This repository demonstrates various Django concepts and features through building a blog application.
+A comprehensive Django project built to learn the Django framework step by step. This repository demonstrates core Django concepts by developing a blog application.
+
+---
 
 ## 📚 Learning Topics Covered
 
 This project covers the following Django topics:
 
-1. **Installing Django & Project Setup using Docker** - Project initialization and environment setup **(Completed)**
-   - Setting up a Django project with Docker for containerization and ease of deployment.
-2. **URLs & Views** - Routing and request handling **(Completed)**
-3. **Templates, Context Processors & Static Files** - Frontend templating and asset management **(Completed)**
-4. **Databases, ORM & Models** - Database design and Object-Relational Mapping ** (Ongoing)**
-5. **Admin & ModelAdmin** - Django admin interface customization
-6. **Working with Forms & ModelForms** - Form handling and validation
-7. **Cookies in Django** - Managing client-side data storage
-8. **Middlewares in Django** - Request/response processing
-9. **Working with Sessions** - Server-side session management
-10. **Authentication & Authorization** - User management and permissions
-11. **Pagination** - Splitting data across multiple pages
-12. **Relationships in Django** - Model relationships (One-to-One, One-to-Many, Many-to-Many)
-13. **Handling File Uploads & Images** - Media file management
-14. **Adding More Features** - Extended functionality
-15. **Deep Dive into Class-Based Views** - Advanced view patterns
+1. **Installing Django & Project Setup (Docker)** – Project initialization and environment setup **(Completed)**
+
+   * Setting up a Django project using Docker for containerization and easier deployment
+
+2. **URLs & Views** – Routing and request handling **(Completed)**
+
+3. **Templates, Context Processors & Static Files** – Frontend templating and asset management **(Completed)**
+
+4. **Databases, ORM & Models** – Database design and Object-Relational Mapping **(Ongoing)**
+
+5. **Admin & ModelAdmin** – Django admin interface customization
+
+6. **Forms & ModelForms** – Form handling and validation
+
+7. **Cookies in Django** – Managing client-side data
+
+8. **Middleware in Django** – Request/response lifecycle processing
+
+9. **Sessions** – Server-side session management
+
+10. **Authentication & Authorization** – User management and permissions
+
+11. **Pagination** – Handling large datasets across multiple pages
+
+12. **Model Relationships** – One-to-One, One-to-Many, Many-to-Many
+
+13. **File Uploads & Images** – Media handling
+
+14. **Feature Extensions** – Adding additional functionality
+
+15. **Class-Based Views (CBVs)** – Advanced view patterns
+
+---
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-- Python 3.10+
-- pip
-- Docker (optional)
+* Python 3.10+
+* pip
+* Docker (optional)
 
-### Installation
+---
+
+## ⚙️ Installation (Without Docker)
 
 1. Clone the repository:
 
@@ -48,8 +69,17 @@ python -m venv venv
 
 3. Activate the virtual environment:
 
-   - Windows: `venv\Scripts\activate`
-   - Linux/Mac: `source venv/bin/activate`
+* Windows:
+
+```bash
+venv\Scripts\activate
+```
+
+* Linux/Mac:
+
+```bash
+source venv/bin/activate
+```
 
 4. Install dependencies:
 
@@ -57,7 +87,7 @@ python -m venv venv
 pip install -r requirements.txt
 ```
 
-5. Run migrations:
+5. Apply migrations:
 
 ```bash
 python manage.py migrate
@@ -75,17 +105,21 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-Visit `http://127.0.0.1:8000` to see the application.
+👉 Visit: `http://127.0.0.1:8000`
 
-### Using Docker
+---
 
-Alternatively, you can run the project using Docker:
+## 🐳 Using Docker
+
+Run the project with Docker:
 
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
-The application will be available at `http://localhost:8000`.
+👉 The application will be available at: `http://localhost:8000`
+
+---
 
 ## 📂 Project Structure
 
@@ -106,10 +140,10 @@ The application will be available at `http://localhost:8000`.
 │   ├── urls.py
 │   ├── views.py
 │   └── ...
-├── static/                 # Static files (CSS, JS, Images)
+├── static/                 # Static files (CSS, JS, images)
 │   └── css/
 ├── templates/              # Global templates
-│   ├── partials/           # Reusable template parts
+│   ├── partials/           # Reusable components
 │   ├── 404.html
 │   └── base.html
 ├── db.sqlite3
@@ -120,17 +154,23 @@ The application will be available at `http://localhost:8000`.
 └── requirements.txt
 ```
 
+---
+
 ## 🛠️ Technologies Used
 
-- Django 6.x
-- Python 3.14
-- SQLite (development)
-- Docker
+* Django 6.x
+* Python 3.x
+* SQLite (development)
+* Docker
 
-## 📝 License
-
-This project is created for educational purposes.
+---
 
 ## 🎯 Purpose
 
-This repository serves as a hands-on learning resource for mastering Django web framework, progressively implementing features from basic to advanced concepts.
+This repository serves as a hands-on learning resource for mastering the Django web framework, progressively building from basic to advanced concepts through practical implementation.
+
+---
+
+## 📝 License
+
+This project is intended for educational purposes only.
