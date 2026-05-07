@@ -119,9 +119,117 @@ docker compose up --build
 
 👉 The application will be available at: `http://localhost:8000`
 
+### Running Migrations in Docker
+
+To create and apply migrations inside the Docker container:
+
+```bash
+# Start the container in detached mode first
+docker compose up -d
+
+# Create migration files
+docker compose exec web python manage.py makemigrations
+
+# Apply migrations to the database
+docker compose exec web python manage.py migrate
+
+# Create a superuser (optional)
+docker compose exec web python manage.py createsuperuser
+```
+
 ---
 
-## 📂 Project Structure
+## � Common Django Commands
+
+### Creating a New App
+
+To create a new Django application:
+
+**Without Docker:**
+```bash
+python manage.py startapp <app_name>
+```
+
+**With Docker:**
+```bash
+docker compose exec web python manage.py startapp <app_name>
+```
+
+After creating an app, add it to the `INSTALLED_APPS` list in `blog/settings.py`.
+
+### Managing Migrations
+
+**Without Docker:**
+```bash
+# Create migration files based on model changes
+python manage.py makemigrations
+
+# Apply migrations to the database
+python manage.py migrate
+
+# Show all migrations and their status
+python manage.py showmigrations
+
+# Show migrations for a specific app
+python manage.py showmigrations <app_name>
+
+# Apply migrations for a specific app
+python manage.py migrate <app_name>
+
+# Unapply migrations (rollback)
+python manage.py migrate <app_name> <migration_number>
+```
+
+**With Docker:**
+```bash
+# Create migration files based on model changes
+docker compose exec web python manage.py makemigrations
+
+# Apply migrations to the database
+docker compose exec web python manage.py migrate
+
+# Show all migrations and their status
+docker compose exec web python manage.py showmigrations
+
+# Show migrations for a specific app
+docker compose exec web python manage.py showmigrations <app_name>
+
+# Apply migrations for a specific app
+docker compose exec web python manage.py migrate <app_name>
+
+# Unapply migrations (rollback)
+docker compose exec web python manage.py migrate <app_name> <migration_number>
+```
+
+### Other Useful Commands
+
+**Without Docker:**
+```bash
+# Create a superuser for admin access
+python manage.py createsuperuser
+
+# Open Django shell for interactive testing
+python manage.py shell
+
+# Collect static files
+python manage.py collectstatic
+```
+
+**With Docker:**
+```bash
+# Create a superuser for admin access
+docker compose exec web python manage.py createsuperuser
+
+# Open Django shell for interactive testing
+docker compose exec web python manage.py shell
+
+# Collect static files
+docker compose exec web python manage.py collectstatic
+```
+
+---
+
+## �📂 Project Structure
 
 ```
 .
