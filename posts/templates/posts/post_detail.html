@@ -2,9 +2,9 @@
 {% block title %}{{ post.post_title }}{% endblock %}
 {%block content %}
 <article class="post-detail">
-    <h1>{{ post.post_title }}</h1>
+    <h1>{{ post.post_title|default:"Untitled" }}</h1>
     <p>{{ post.post_content }}</p>
-    <p>{{ post.published_date }}</p>
+    <p>{{ post.published_date|date:"F d, Y" }}</p>
     <a href="{% url 'posts:home' %}">← Back to posts</a>
 </article>
 {% endblock %}
