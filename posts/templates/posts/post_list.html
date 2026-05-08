@@ -6,10 +6,12 @@
         {% for post in posts %}
             <article class="post-card">
                 <h2>
-                    <a href="{% url 'posts:post_detail' post.id %}">{{ post.title }}</a>
+                    <a href="{% url 'posts:post_detail' post.id %}">{{ post.post_title }}</a>
                 </h2>
-                <p>{{ post.content|truncatechars:100 }}</p>
+                <p>{{ post.post_content|truncatechars:100 }}</p>
             </article>
+            {% empty %}
+                <p>No posts available.</p>
         {% endfor %}
     </div>
 {% endblock %}

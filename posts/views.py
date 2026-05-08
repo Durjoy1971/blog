@@ -1,23 +1,17 @@
-from django.shortcuts import render
-from django.http import Http404
-
-# Temporary dummy data
-POSTS = [
-    {"id": 1, "title": "First Post", "content": "Hello Django"},
-    {"id": 2, "title": "Second Post", "content": "Learning Templates"},
-]
-
-# Home page view → list all posts
-def post_list(request):
-    context = {"posts": POSTS}
-    return render(request, 'posts/post_list.html', context)
-
+from django.shortcuts import render, get_object_or_404
+from .models import Post
 
 # Detail view → single post
 def post_detail(request, id):
-    post = next((p for p in POSTS if p["id"] == id), None)
-    if not post:
-        raise Http404("Post not found")
+    post = get_object_or_404(Post, id=id)
 
     context = {"post": post}
     return render(request, 'posts/post_detail.html', context)
+
+# Home page view → list all posts from database
+def home(request):
+    all_posts = Post.objects.all().order_by('-created_at')
+    context = {
+        'posts': all_posts
+    }
+    return render(request, 'posts/post_list.html', context)

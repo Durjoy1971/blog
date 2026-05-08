@@ -1,9 +1,10 @@
 {% extends "base.html" %}
-{% block title %}{{ post.title }}{% endblock %}
+{% block title %}{{ post.post_title }}{% endblock %}
 {%block content %}
 <article class="post-detail">
-    <h1>{{ post.title }}</h1>
-    <p>{{ post.content }}</p>
-    <a href="{% url 'posts:post_list' %}">← Back to posts</a>
+    <h1>{{ post.post_title }}</h1>
+    <p>{{ post.post_content }}</p>
+    <p>{{ post.published_date }}</p>
+    <a href="{% url 'posts:home' %}">← Back to posts</a>
 </article>
 {% endblock %}
