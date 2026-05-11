@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}{% if is_edit %}Edit Post{% else %}Create Post{% endif %}{% endblock %}
+{% block content %}
+    <h1>{% if is_edit %}Edit Post{% else %}Create New Post{% endif %}</h1>
+    
+    <div class="form-container">
+        <form method="post">
+        {% csrf_token %}
+        
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger">
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        <div class="form-group">
+            <label for="{{ form.post_title.id_for_label }}">Title:</label>
+            {{ form.post_title }}
+            {% if form.post_title.errors %}
+                <div class="text-danger">
+                    {% for error in form.post_title.errors %}
+                        <small>{{ error }}</small>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.post_content.id_for_label }}">Content:</label>
+            {{ form.post_content }}
+            {% if form.post_content.errors %}
+                <div class="text-danger">
+                    {% for error in form.post_content.errors %}
+                        <small>{{ error }}</small>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        
+        <button type="submit" class="btn btn-primary">
+            {% if is_edit %}Update Post{% else %}Create Post{% endif %}
+        </button>
+        
+        <a href="{% if is_edit %}{% url 'posts:post_detail' post.id %}{% else %}{% url 'posts:home' %}{% endif %}" class="btn btn-secondary">Cancel</a>
+    </form>
+    </div>
+{% endblock %}

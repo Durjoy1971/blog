@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 {% block title %}All Posts{% endblock %}
 {% block content %}
-    <h1>Latest Posts</h1>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h1>Latest Posts</h1>
+        <a href="{% url 'posts:post_create' %}" class="btn btn-primary">Create Post</a>
+    </div>
     <div class="posts">
         {% for post in posts %}
             <article class="post-card">
